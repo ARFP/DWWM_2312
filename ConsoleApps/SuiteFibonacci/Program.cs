@@ -1,80 +1,54 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using System.Text;
 
-/*
-Variables 
-Position est un entier			// utilisé pour l’incrémentation 
-N est un entier 				// donnée fournie par l’utilisateur 
-Resultat est une chaine de caractère 	// sera affiché à l’utilisateur à la fin du programme 
-NbPrecedent est un entier 64 bits	// Nombre précédent dans la suite  
-NbCourant est un  entier 64 bits	// Nombre courant dans la suite  
-NbSuivant est un entier 64 bits		// Nombre suivant dans la suite (celui qu’on est en train de calculer)  
+Console.WriteLine("Suite de Fibonacci" + Environment.NewLine);
 
-DEBUT PROGRAMME 
+/// <summary>
+/// Trouver l'occurence "n" dans la suite de Fibonacci.
+/// </summary>
+static int Fibonacci(int n)
+{
+    if (n < 2)
+        return (n);
+    return (Fibonacci(n - 1) + Fibonacci(n - 2));
+}
 
-Lire(N) 				// saisie par l’utilisateur 
-Position := 2 
-Resultat :=  "0\n1"  
-NbPrecedent := 0 		// 1er nombre de la suite  
-NbCourant := 1			// 2ème nombre de la suite 
-
-SI N EST SUPÉRIEUR À 2 ALORS 
-    TANT QUE Position EST INFÉRIEUR À N FAIRE 
-
-        NbSuivant := NbPrecedent + NbCourant 
-        Resultat := Resultat, "\n",  NbSuivant 
-        NbPrecedent := NbCourant 
-        NbCourant := NbSuivant 
-        Position:= Position + 1 
-    FIN TANT QUE 
-SINON 
-    N: = 2 
-FIN SI 
-
-Écrire "Les ", N, " premiers nombres de la suite de Fibonacci sont \n ", Resultat 
-
-FIN PROGRAMME  
-*/
-
+/// <summary>
+/// Afficher les X premiers termes de la suite de Fibonacci
+/// </summary>
 static string SuiteFibonacci(int n)
 {
-    int position;    
-    string resultat;
-    long nbPrecedent;
-    long nbCourant;
-    long nbSuivant;
+    string resultat = "";
+    int i;
 
-    position = 2;
-    resultat = "0\n1";
-    nbPrecedent = 0;
-    nbCourant = 1;
-    
-    if( n > 2)
+    for (i = 0; i < n; i++)
     {
-        while ( position < n )
-        {
-            nbSuivant = nbPrecedent + nbCourant;
-            resultat += "\n" + nbSuivant ;
-            nbPrecedent = nbCourant ;
-            nbCourant = nbSuivant ;
-            position++;
-        }
+        resultat += "\n" + Fibonacci(i);
     }
-    else
+
+    return resultat;
+}
+
+/// <summary>
+/// Version avec StringBuilder (plus rapide pour la gestion des chaines, mais plus verbeux)
+/// </summary>
+static string SuiteFibonacci_PlusRapide(int n)
+{
+    StringBuilder resultat = new StringBuilder("");
+    int i;
+
+    for (i = 0; i < n; i++)
     {
-        n = 2;
+        resultat.Append("\n");
+        resultat.Append(Fibonacci(i));
     }
-    return
-        "Les " +
-        n +
-        " premiers nombres de la suite de fibonacci sont "
-         + resultat;
+    return resultat.ToString();
 }
 
 Console.WriteLine("Combien de nombre de la suite souhaitez vous afficher ?");
 int n;
 string saisie = Console.ReadLine();
 int.TryParse(saisie, out n);
-String test = SuiteFibonacci(n);
+//string test = SuiteFibonacci(n);
+string test = SuiteFibonacci_PlusRapide(n);
 Console.WriteLine(test);
-
