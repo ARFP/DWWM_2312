@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuiteFibonacci", "SuiteFibonacci\SuiteFibonacci.csproj", "{ADFF9840-08F1-411F-B3CE-1DC8B59430FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mini_jalon_du_11_01_2024", "mini_jalon_du_11_01_2024\mini_jalon_du_11_01_2024.csproj", "{4115010A-572A-427D-8642-D5A726B58042}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mini_jalon_du_11_01_2024", "mini_jalon_du_11_01_2024\mini_jalon_du_11_01_2024.csproj", "{4115010A-572A-427D-8642-D5A726B58042}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animals", "Animals\Animals.csproj", "{D5E97C46-F933-423F-8F39-68331F324E45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4115010A-572A-427D-8642-D5A726B58042}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4115010A-572A-427D-8642-D5A726B58042}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4115010A-572A-427D-8642-D5A726B58042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E97C46-F933-423F-8F39-68331F324E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E97C46-F933-423F-8F39-68331F324E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E97C46-F933-423F-8F39-68331F324E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E97C46-F933-423F-8F39-68331F324E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
