@@ -1,0 +1,22 @@
+Pour sa majorité, investit la somme de 100 € dans des actions en Bourse. 
+Il a choisi des actions garantissant des gains faibles mais certains.
+Ses actions lui rapportent 5% de bénéfice par année.
+Développer un algorithme en pseudo-code permettant d’afficher un tableau 
+sur 10 ans associant à chaque année la somme acquise sur son compte.
+
+
+VARIABLES
+    somme est un entier
+    interet est un reel
+    tabInterets est un tableau de reels
+
+DEBUT PROGRAMME
+    somme := 100
+    interet := 0.05
+
+    pour i de 0 jusqu'a 9 faire
+        tabInterets[i] := somme *0.05
+        somme := somme+tabInterets[i]
+    fin pour
+
+FIN PROGRAMME
