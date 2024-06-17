@@ -11,5 +11,6 @@ human.eat();
 human.eat();
 human.eat();
 human.eat();
+human.eat();
 cat.eat();
 dog.eat();
