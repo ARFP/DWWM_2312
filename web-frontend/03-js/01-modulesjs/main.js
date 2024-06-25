@@ -10,10 +10,12 @@ const resultat = document.getElementById('resultat');
 
 console.log(prenom, age);
 
-document.querySelector('button').addEventListener('click', () => {
+document.querySelector('button[type="button"]').addEventListener('click', () => {
     p.firstname = prenom.value;
     p.age = age.value;
+    p.calcMajority();
     console.log(p);
     resultat.textContent = "Bonjour " + p.firstname + ",  vous avez " + p.age + " ans.";
     resultat.textContent = `Bonjour ${p.firstname}, vous avez ${p.age} ans.`;
+    resultat.innerHTML += "<br>Vous êtes " + (p.isMajor ? "majeur" : "mineur");
 });
