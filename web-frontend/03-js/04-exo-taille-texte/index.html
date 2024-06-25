@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo VueJS</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./main.js" type="module"></script>
+</head>
+<body id="app">
+    <h1>Changer la taille du texte</h1>
+    <div>
+        <button type="button" @click="increaseSize">Augmenter la taille du texte</button>
+        <button type="button" @click="decreaseSize">Diminuer la taille du texte</button>
+        <span>Taille du texte: {{ realTextSize }}px</span>
+        <input type="number" v-model="textSize">
+    </div>
+    <p :style="{ 'font-size': `${realTextSize}px` }">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur dolorum libero minima alias delectus pariatur dolores modi tempore facere similique ipsa aliquam accusantium inventore, sit maiores itaque optio ut asperiores?</p>
+</body>
+</html>
