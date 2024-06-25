@@ -12,4 +12,4 @@ const app = {
     }
 }
 
-Vue.createApp(app).mount('#monApp')
+Vue.createApp(app).mount('#monApp');
