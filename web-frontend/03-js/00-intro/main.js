@@ -1,4 +1,5 @@
 
+const url = "toto";
 const btn = document.getElementById('btn');
 const compteur = document.getElementById('compteur');
 //const btn2 = dinterocument.querySelector('#btn');
@@ -10,6 +11,4 @@ btn.addEventListener('click', (event) => {
     valeur = parseInt(valeur);
     ++valeur;
     compteur.textContent = valeur;
-
-
 });

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr-ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/main.js" type="module"></script>
+</head>
+<body id="app">
+    <h1>Saisissez un prénom et un âge</h1>
+
+    <form>
+        <label for="prenom">Prénom: </label>
+        <input type="text" id="prenom" v-model="person.firstname" required> 
+    
+        <label for="age">Age: </label>
+        <input type="number" id="age" v-model="person.age" required>
+    
+        <button @click="validateForm" type="button">Valider</button>
+        <button type="reset">Vider</button>
+    </form>
+
+    <hr>
+
+    <p>
+        {{ formResult }}
+    </p>
+    <p>
+        {{ majority }}
+    </p>
+    <p>
+        {{ retired }}
+    </p>
+</body>
+</html>
