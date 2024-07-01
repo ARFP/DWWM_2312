@@ -1,20 +1,34 @@
-/*
-let reponse = await fetch('https://arfp.github.io/tp/web/javascript/02-zipcodes/zipcodes.json');
-let json = await reponse.json();
-console.log(json);
-*/
-
 const app = {
     data() {
         return {
-
+            title: 'Code postaux',
+            userInput: '',
+            cities: [],
+            results: []
         }
     },
 
     async mounted() {
-        let reponse = await fetch('https://arfp.github.io/tp/web/javascript/02-zipcodes/zipcodes.json');
-        let json = await reponse.json();
+        let response = await fetch('./data/zipcodes.json');
+        this.cities = await response.json();
+        console.log(this.cities);
+    },
+
+    methods: {
+        validate() {
+            console.log(this.userInput);
+
+            this.results = this.cities.filter(city => city.codePostal === this.userInput);
+
+            /*for(let city of this.cities) {
+                if(city.codePostal == this.userInput) {
+                    this.results.push(city);
+                }
+            }*/
+
+        }
     }
 }
 
-Vue.createApp(app).mount("#codePostaux");
+
+Vue.createApp(app).mount("#zipCodes");

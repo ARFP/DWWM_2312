@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Code postaux</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./js/main.js" type="module"></script>
 </head>
 <body>
-    <div id="codePostaux">
-        <h1>Code postaux</h1>
-        <form method="GET">
-            <label for="site-search">Entrez un code postal</label>
-            <input type="search" id="site-search" name="search">
-            <button type="button">Valider</button>
+    <div id="zipCodes">
+        <h1>{{ title }}</h1>
+        <form>
+            <label for="site-search">Entrez un code postal: </label>
+            <input type="search" id="site-search" name="search" list="cities-suggest" v-model="userInput">
+            <datalist id="cities-suggest">
+                <option v-for="city of cities" :value="city.codePostal">
+                    {{ city.nomCommune }}
+                </option>
+            </datalist>
+            <button type="button" @click="validate">Valider</button>
         </form>
+        <div>
+            <ul v-if="results.length > 0">
+                <li v-for="city of results">
+                    {{ city.codePostal }} {{ city.nomCommune }}
+                </li>
+            </ul>
+            <p v-else>Aucun résultat</p>
+        </div>
     </div>
 </body>
 </html>
