@@ -16,8 +16,6 @@ const app = {
 
     methods: {
         validate() {
-            console.log(this.userInput);
-
             this.results = this.cities.filter(city => city.codePostal === this.userInput);
 
             /*for(let city of this.cities) {
@@ -25,10 +23,8 @@ const app = {
                     this.results.push(city);
                 }
             }*/
-
         }
     }
 }
-
 
 Vue.createApp(app).mount("#zipCodes");

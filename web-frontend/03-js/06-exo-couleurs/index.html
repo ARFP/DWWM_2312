@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couleurs</title>
+    <link rel="stylesheet" href="./assets/main.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/main.js" type="module"></script>
+</head>
+<body>
+    <div id="appColors">
+    <div id="background" :style="{ 'background-color': backgroundClr }">
+        <h1>Changement de couleurs</h1>
+        <form>
+            <input type="text" v-model="redInput" maxlength="2" pattern="[A-F0-9]{2}" @input="inputColor">
+            <input type="text" v-model="greenInput" maxlength="2" pattern="[A-F0-9]{2}" @input="inputColor">
+            <input type="text" v-model="blueInput" maxlength="2" pattern="[A-F0-9]{2}" @input="inputColor">
+            <button type="button" @click="changeColor" data-clr="red">Rouge</button>
+            <button type="button" @click="changeColor" data-clr="green">Vert</button>
+            <button type="button" @click="changeColor" data-clr="blue">Bleu</button>
+            <button type="button" @click="changeColor" data-clr="#AA00FF">Violet</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
