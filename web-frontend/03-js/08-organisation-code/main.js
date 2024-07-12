@@ -20,6 +20,5 @@ function genererEmail(personne) { //personne = "Mike DEV";
 
 function genererTableauHTML() {
     let td = document.createElement('td');
-    td.textContent = genererEmail('DEV', 'Mike')
-
+    td.textContent = genererEmail('Mike DEV');
 }
