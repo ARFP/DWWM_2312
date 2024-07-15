@@ -1,14 +1,15 @@
 import { DbCar } from "./DbCar.js";
 
+
+const resultElement = document.getElementById('result');
+
+
 let dbCar = new DbCar();
 let cars = await dbCar.fetchAll();
 
-const result = document.getElementById('result');
-console.log(result);
 
-
-
-function genererEmail(personne) { //personne = "Mike DEV";
+// Exemple personne = "Mike DEV";
+function genererEmail(personne) { 
     
     let tableau = personne.split(' ');
     let prenom = tableau[0];
@@ -21,4 +22,5 @@ function genererEmail(personne) { //personne = "Mike DEV";
 function genererTableauHTML() {
     let td = document.createElement('td');
     td.textContent = genererEmail('Mike DEV');
+    // suite du code...
 }
