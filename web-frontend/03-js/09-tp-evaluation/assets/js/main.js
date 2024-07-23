@@ -1,30 +1,45 @@
-import { Student } from "./Student.js";
+import { StudentList } from "./StudentList.js";
 
-// Récupération du JSON
-let response = await fetch('./assets/data/evaluation.json');
-// Conversion du JSON en objet Javascript
-const json = await response.json();
+const myStudentList = new StudentList();
+await myStudentList.createStudents();
 
-// Affichage du jeu de données téléchargé
-console.log(json);
+createRows();
 
-// Création du tableau d'étudiants qui stockera nos instances de la classe Student
-// C'est ce tableau que l'on manipulara dans l'application
-const students = [];
+console.log(myStudentList);
 
-// On parcourt le jeu de données
-for(let aStudent of json) {
-    // Pour chaque étudiant, on crée une instance de la classe Student
-    let newStudent = new Student(aStudent.fullname, aStudent.grade);
-    // On ajoute l'instance dans notre tableau d'étudiants
-    students.push(newStudent);
+/**
+ * Crée une cellule de tableau
+ * @param {String} data la valeur à ajouter dans la cellule 
+ * @returns {HtmlElement} La cellule créée
+ */
+function createCell(data) {
+    const td = document.createElement('td');
+    td.textContent = data;
+    return td;
 }
 
-// Affichage du tableau d'étudiants
-console.log(students);
+/**
+ * Crée une ligne de tableau contenant les informations d'un étudiant
+ * @param {Student} aStudent L'étudiant
+ * @returns {HtmlElement} La ligne nouvellement créée
+ */
+function createOneRow(aStudent) {
+    const tr = document.createElement('tr');
 
+    tr.appendChild(createCell(aStudent.lastname));
+    tr.appendChild(createCell(aStudent.firstname));
+    tr.appendChild(createCell(aStudent.grade));
 
+    return tr;
+}
 
+/**
+ * Parcourt la liste d'étudiants et créé les lignes de tableaux correspondantes
+ */
+function createRows() {
+    let tbody = document.getElementById('gradeTable');
 
-//console.log(students)
-
+    for(let aStudent of myStudentList.students) {
+        tbody.appendChild(createOneRow(aStudent));
+    }
+}
