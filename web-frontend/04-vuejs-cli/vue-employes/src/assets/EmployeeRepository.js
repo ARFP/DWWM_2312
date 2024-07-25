@@ -7,7 +7,10 @@ export class EmployeeRepository
      * @param {Array} _employeeList 
      */
     constructor(_employeeList) {
-        this.employees = _employeeList;
+        this.employees = [];
+        _employeeList.forEach(x => {
+            this.employees.push(new Employee(x));
+        });
     }
 
     get count() {
