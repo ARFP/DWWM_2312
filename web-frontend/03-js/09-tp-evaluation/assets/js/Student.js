@@ -23,13 +23,10 @@ export class Student
         this.lastname = splitName[0];
         this.firstname = splitName[1];
     }
+
+    isGradeValid() {
+        return this.grade >= 0 && this.grade <= 20;     
+    }
+
+
 }
-
-/*
-let toto = { fullname: "Armanetti Michaël", grade: 12 };
-
-console.log(toto.fullname)
-
-let student = new Student(toto.fullname, toto.grade);
-*/
-// export { Student }

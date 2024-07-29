@@ -67,6 +67,10 @@ btnAddStudent.addEventListener('click', () => {
     console.log(inputFullname, inputGrade);
 
     let newStudent = new Student(inputFullname, inputGrade);
+
+    // SI la note de l'étudiant est valide
+    
+
     myStudentList.students.push(newStudent);
     console.log(myStudentList.students);
 });
