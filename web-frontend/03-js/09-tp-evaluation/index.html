@@ -10,18 +10,37 @@
 <body>
     <div id="app">
         <h1>Résultat de l'évaluation</h1>
+        <fieldset>
+            <legend>Ajouter une note</legend>
+            <div>
+                <label>Nom et prénom : </label>
+                <input type="text" id="fullname">
+            </div>
+            <div>
+                <label>Note : </label>
+                <input type="number" id="grade" min="0" max="20">
+            </div>
+            <button id="btnAddStudent">Ajouter</button>
+        </fieldset>
         <table>
             <thead>
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Note</th>
+                    <th>Obtenu</th>
                 </tr>
             </thead>
             <tbody id="gradeTable">
 
             </tbody>
         </table>
+        <ul>
+            <li>Nombre d'étudiants: <span id="nbStudents">0</span></li>
+            <li>Moyenne de la classe: <span id="avgGrade">0</span></li>
+            <li>Nombre d'étudiants au dessus de la moyenne: <span id="aboveAvg">0</span></li>
+            <li>Note éliminatoire: 12</li>
+        </ul>
     </div>
 </body>
 </html>

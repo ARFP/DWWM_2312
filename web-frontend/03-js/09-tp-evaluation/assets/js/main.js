@@ -1,9 +1,19 @@
+import { Student } from "./Student.js";
 import { StudentList } from "./StudentList.js";
 
 const myStudentList = new StudentList();
 await myStudentList.createStudents();
 
-createRows();
+const nbStudents = document.getElementById('nbStudents');
+nbStudents.textContent = myStudentList.getNbStudents();
+
+const avgGrade = document.getElementById('avgGrade');
+avgGrade.textContent = myStudentList.getAvgGrade().toFixed(2);
+
+const aboveAvg = document.getElementById('aboveAvg');
+aboveAvg.textContent = myStudentList.getAboveAvg();
+
+createRows(); // création du tableau HTML
 
 console.log(myStudentList);
 
@@ -29,6 +39,7 @@ function createOneRow(aStudent) {
     tr.appendChild(createCell(aStudent.lastname));
     tr.appendChild(createCell(aStudent.firstname));
     tr.appendChild(createCell(aStudent.grade));
+    tr.appendChild(createCell(aStudent.passed ? "Oui" : "Non"));
 
     return tr;
 }
@@ -43,3 +54,19 @@ function createRows() {
         tbody.appendChild(createOneRow(aStudent));
     }
 }
+
+/* GESTION DES EVENEMENTS */
+
+const btnAddStudent = document.getElementById('btnAddStudent');
+const fullname = document.getElementById('fullname');
+const grade = document.getElementById('grade');
+
+btnAddStudent.addEventListener('click', () => {
+    let inputFullname = fullname.value;
+    let inputGrade = grade.value;
+    console.log(inputFullname, inputGrade);
+
+    let newStudent = new Student(inputFullname, inputGrade);
+    myStudentList.students.push(newStudent);
+    console.log(myStudentList.students);
+});
