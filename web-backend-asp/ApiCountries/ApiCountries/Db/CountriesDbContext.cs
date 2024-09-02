@@ -6,6 +6,7 @@ namespace ApiCountries.Db
     public class CountriesDbContext : DbContext
     {
         public DbSet<Continent> Continents { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

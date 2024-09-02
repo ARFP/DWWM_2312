@@ -3,6 +3,7 @@ using ApiCountries.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiCountries.Migrations
 {
     [DbContext(typeof(CountriesDbContext))]
-    partial class CountriesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240822144601_addCountryEntity2")]
+    partial class addCountryEntity2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,12 +54,12 @@ namespace ApiCountries.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CountryId"), 1L, 1);
 
-                    b.Property<int>("ContinentId")
+                    b.Property<int>("continentId")
                         .HasColumnType("int");
 
                     b.HasKey("CountryId");
 
-                    b.HasIndex("ContinentId");
+                    b.HasIndex("continentId");
 
                     b.ToTable("Countries");
                 });
@@ -66,7 +68,7 @@ namespace ApiCountries.Migrations
                 {
                     b.HasOne("ApiCountries.Models.Continent", "continent")
                         .WithMany()
-                        .HasForeignKey("ContinentId")
+                        .HasForeignKey("continentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -17,5 +17,7 @@ namespace ApiCountries.Models
 
         public int ContinentArea { get; set; }
 
+        public ICollection<Country>? Countries { get; set; }
+
     }
 }
