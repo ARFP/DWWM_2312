@@ -55,6 +55,10 @@ namespace ApiCountries.Migrations
                     b.Property<int>("ContinentId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CountryId");
 
                     b.HasIndex("ContinentId");
@@ -64,13 +68,13 @@ namespace ApiCountries.Migrations
 
             modelBuilder.Entity("ApiCountries.Models.Country", b =>
                 {
-                    b.HasOne("ApiCountries.Models.Continent", "continent")
+                    b.HasOne("ApiCountries.Models.Continent", "Continent")
                         .WithMany()
                         .HasForeignKey("ContinentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("continent");
+                    b.Navigation("Continent");
                 });
 #pragma warning restore 612, 618
         }

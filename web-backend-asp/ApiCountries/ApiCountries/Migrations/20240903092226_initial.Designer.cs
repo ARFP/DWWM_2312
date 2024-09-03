@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiCountries.Migrations
 {
     [DbContext(typeof(CountriesDbContext))]
-    [Migration("20240826093853_toto2")]
-    partial class toto2
+    [Migration("20240903092226_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,9 +57,26 @@ namespace ApiCountries.Migrations
                     b.Property<int>("ContinentId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CountryId");
 
+                    b.HasIndex("ContinentId");
+
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("ApiCountries.Models.Country", b =>
+                {
+                    b.HasOne("ApiCountries.Models.Continent", "Continent")
+                        .WithMany()
+                        .HasForeignKey("ContinentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Continent");
                 });
 #pragma warning restore 612, 618
         }
