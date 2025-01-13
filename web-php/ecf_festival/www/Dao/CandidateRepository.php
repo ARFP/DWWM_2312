@@ -1,4 +1,7 @@
 <?php 
+
+require_once 'DbConnect.php';
+
 /**
  * gestion des candidats
  * @method searchAll(): array : récupère tous les candidats
@@ -9,4 +12,23 @@
 class CandidateRepository 
 {
 
+    public function searchAll(): array 
+    {
+
+    }
+
+    public function createCandidate(array $data): void 
+    {
+
+    }
+
+    public function searchByAge(int $_age): array 
+    {
+
+    }
+
+    public function signIn(string $mail_user, string $pass_user): bool 
+    {
+
+    }
 }
