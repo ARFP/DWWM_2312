@@ -85,6 +85,7 @@ class AuthRepository
     public static function addUser(string $username, string $password): bool {
         $pdo = DbConnect::getInstance();
 
+        // On vérifie que le nom d'utilisateur n'existe pas !
         $sqlVerifUser = "SELECT COUNT(*) as nb FROM tbl_users WHERE username=:username";
 
         $stmt = $pdo->prepare($sqlVerifUser);
@@ -102,15 +103,16 @@ class AuthRepository
 
             $stmt->closeCursor(); // Fermer la requête préparée
 
-            // chiffrement du mot de passe
+            // Chiffrement du mot de passe
             $password = password_hash($password, PASSWORD_ARGON2ID);
 
+            // Instruction SQL pour l'ajout de l'utilisateur
             $sqlAjout = "INSERT INTO tbl_users (`username`, `password`) VALUES (:u, :p)";
 
             $stmt = $pdo->prepare($sqlAjout);
 
             if($stmt->execute([':u' => $username, ':p' => $password])) {
-                $nbLignes =  $stmt->rowCount();
+                $nbLignes =  $stmt->rowCount(); // récupération du nombre de lignes ajoutées dasn la table
 
                 if($nbLignes > 0) {
                     return true; // insertion réussie
