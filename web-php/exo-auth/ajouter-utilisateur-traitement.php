@@ -1,5 +1,7 @@
 <?php 
 
+require_once 'Dao/AuthRepository.php';
+
 session_start(); 
 
 // Si la session est vide, on redirige vers le formulaire d'identification
@@ -33,17 +35,17 @@ if(!empty($_POST)) {
         }
 
         // Au moins 1 lettre minuscule
-        if(!preg_match('/^[a-z]{1,}$/', $password)) {
+        if(!preg_match('/[a-z]{1,}/', $password)) {
             throw new Exception('Le mot de passe doit contenir au moins 1 lettre minuscule');
         }
 
         // Au moins 1 lettre majuscule
-        if(!preg_match('/^[A-Z]+$/', $password)) {
+        if(!preg_match('/[A-Z]+/', $password)) {
             throw new Exception('Le mot de passe doit contenir au moins 1 lettre majuscule');
         }
 
         // Au moins 1 chiffre
-        if(!preg_match('/^[0-9]+$/', $password)) {
+        if(!preg_match('/[0-9]+/', $password)) {
             throw new Exception('Le mot de passe doit contenir au moins 1 chiffre');
         }
 
@@ -52,7 +54,16 @@ if(!empty($_POST)) {
             throw new Exception('Le mot de passe doit contenir au moins 1 caractère spécial');
         }
 
+        //echo "Les données sont valides : " . var_export($_POST, true);
+
         // Sauvegarder en base de données
+        $ajoutOk = AuthRepository::addUser($_POST['username'], $password);
+
+        if($ajoutOk === false) {
+            echo "Erreur lors de l'ajout";
+        } else {
+            header('location: utilisateurs.php');
+        }
         
 
     } catch(Exception $ex) {

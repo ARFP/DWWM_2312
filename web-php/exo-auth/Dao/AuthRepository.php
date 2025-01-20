@@ -80,8 +80,44 @@ class AuthRepository
      * Ajoute un nouvel utilisateur dans la base de données
      * @param string $username le nom d'utilisateur
      * @param string $password le mot de passe de l'utilisateur
+     * @return bool TRUE si l'utilisateur a été ajouté | FALSE en cas d'échec
      */
     public static function addUser(string $username, string $password): bool {
+        $pdo = DbConnect::getInstance();
 
+        $sqlVerifUser = "SELECT COUNT(*) as nb FROM tbl_users WHERE username=:username";
+
+        $stmt = $pdo->prepare($sqlVerifUser);
+
+        if($stmt->execute([':username' => $username])) {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($result === false) {
+                throw new Exception('Erreur SQL');
+            }
+
+            if($result['nb'] > 0) { // si le username existe déjà
+                throw new Exception("Le nom d'utilisateur existe déjà !");
+            }
+
+            $stmt->closeCursor(); // Fermer la requête préparée
+
+            // chiffrement du mot de passe
+            $password = password_hash($password, PASSWORD_ARGON2ID);
+
+            $sqlAjout = "INSERT INTO tbl_users (`username`, `password`) VALUES (:u, :p)";
+
+            $stmt = $pdo->prepare($sqlAjout);
+
+            if($stmt->execute([':u' => $username, ':p' => $password])) {
+                $nbLignes =  $stmt->rowCount();
+
+                if($nbLignes > 0) {
+                    return true; // insertion réussie
+                }
+            }
+        }
+
+        return false; // insertion échouée
     } 
 }

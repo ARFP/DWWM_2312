@@ -33,6 +33,8 @@
             <?php 
                 // Récupérer les utilisateurs à partir de la base de données
                 $utilisateurs = AuthRepository::getAllUsers();
+
+                echo 'Il y a ' .count($utilisateurs). ' utilisateurs enregistrés';
                
                 // boucle pour afficher tous les utilisateurs
                 foreach($utilisateurs as $unUtilisateur) {
