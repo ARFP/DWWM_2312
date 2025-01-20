@@ -9,7 +9,7 @@ class DbConnect
     private static ?PDO $instance = null;
 
     /**
-     * Créer et retourne l'instance PDO 
+     * Crée et retourne l'instance PDO 
      * @return PDO l'instance PDO créée
     */
     public static function getInstance(): PDO {
