@@ -50,8 +50,6 @@ class AuthRepository
         }
 
         return $result;
-
-
     }
 
     /**

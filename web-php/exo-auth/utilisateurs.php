@@ -30,20 +30,20 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-                // Récupérer les utilisateurs à partir de la base de données
-                $utilisateurs = AuthRepository::getAllUsers();
+        <?php 
+            // Récupérer les utilisateurs à partir de la base de données
+            $utilisateurs = AuthRepository::getAllUsers();
 
-                // echo 'Il y a ' .count($utilisateurs). ' utilisateurs enregistrés';
-               
-                // boucle pour afficher tous les utilisateurs
-                foreach($utilisateurs as $unUtilisateur) {
-                    echo '<tr>';
-                    echo '<td>' . $unUtilisateur['id'] . '</td>';
-                    echo '<td>' . $unUtilisateur['username'] . '</td>';
-                    echo '</tr>';
-                }
-            ?>
+            // echo 'Il y a ' .count($utilisateurs). ' utilisateurs enregistrés';
+            
+            // boucle pour afficher tous les utilisateurs
+            foreach($utilisateurs as $unUtilisateur) {
+                echo '<tr>';
+                echo '<td>' . $unUtilisateur['id'] . '</td>';
+                echo '<td>' . $unUtilisateur['username'] . '</td>';
+                echo '</tr>';
+            }
+        ?>
         </tbody>
     </table>
     

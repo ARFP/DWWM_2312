@@ -31,10 +31,10 @@ if(!empty($_POST)) {
 
         // Contrôler le format de la date
         // Si le format est incorrect, Datetime lève une exception.
-        $date = new DateTime($dateDeNaissance);  // 2025-01-14 00:00:00
-        $auj = new DateTime(); // 2025-01-14 16:08:35
-        // Définit l'heure minute et seconde à 0
-        $auj->setTime(0, 0, 0, 0); // 2025-01-14 00:00:00
+        $date = new DateTime($dateDeNaissance);  // 2025-01-14 00:00:00 
+        $auj = new DateTime(); // 2025-01-14 16:08:35 
+        // Définit l'heure minute et seconde à 0 
+        $auj->setTime(0, 0, 0, 0); // 2025-01-14 00:00:00 
 
         // Si la date fournie est supérieure ou égale à la date du jour
         // Erreur
