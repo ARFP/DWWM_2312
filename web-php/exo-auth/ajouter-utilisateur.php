@@ -26,7 +26,7 @@
             <input type="password" name="password2" id="myPassword2">
         </div>
         <div>
-            <button type="submit">S'identifier</button>
+            <button type="submit">Ajouter</button>
         </div>
     </form>
     
