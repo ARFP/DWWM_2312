@@ -14,7 +14,11 @@ class DbConnect
     */
     public static function getInstance(): PDO {
         if(self::$instance === null) {
-            self::$instance = new PDO('mysql:host=localhost;port=3306;dbname=demo_auth;charset=utf8', 'root', '');
+            self::$instance = new PDO(
+                'mysql:host=mysql-mdevoldere.alwaysdata.net;port=3306;dbname=mdevoldere_users;charset=utf8', 
+                '396595', 
+                '!Toto2025'
+            );
         }
 
         return self::$instance;
